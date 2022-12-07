@@ -23,7 +23,7 @@ const userSlice = createSlice({
   initialState,
   //now adding the functions / reducers to handle this specific state
   reducers: {
-    logout: (state: IUser, action) => {
+    logout: (state: IUser) => {
       state.token = null;
       state.token = null;
     },

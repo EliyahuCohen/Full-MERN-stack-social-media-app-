@@ -18,7 +18,6 @@ export const useUser = () => {
           token: response.data.token,
         })
       );
-      console.log(response);
     } catch (err: any) {
       console.log(err.response);
     }
@@ -34,7 +33,6 @@ export const useUser = () => {
         password,
         image,
       });
-      console.log(response.data);
       dispatch(
         login({
           user: response.data.user,

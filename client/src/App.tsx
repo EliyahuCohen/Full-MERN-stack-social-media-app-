@@ -11,39 +11,42 @@ import {
 } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { IUser } from "./features/userSlice";
+import Navbar from "./components/Navbar";
 
 function App() {
   const user = useSelector((state: { user: IUser }) => state.user);
   return (
     <div className="App">
       <Router>
-        <div>
-          <Link to="/">Home</Link>
-          <Link to="login">Login</Link>
-          <Link to="signup">Signup</Link>
-        </div>
+        <Navbar />
         <Routes>
-          <Route
-            path="login"
-            element={!user.user ? <Login /> : <Navigate to="/" />}
-          />
-          <Route
-            path="signup"
-            element={!user.user ? <Signup /> : <Navigate to="/" />}
-          />
           <Route
             path="/"
             element={
-              !user.user ? (
-                <Login />
+              user.token != null ? (
+                <>Hey home</>
               ) : (
-                <>
-                  <h1>Hey this is the Home page</h1>
-                  <img
-                    src={user.user.imgUrl}
-                    alt={`${user.user.email} image logo`}
-                  />
-                </>
+                <Navigate to="/login" replace={true} />
+              )
+            }
+          />
+          <Route
+            path="login"
+            element={
+              user.token != null ? (
+                <Navigate to="/" replace={true} />
+              ) : (
+                <Login />
+              )
+            }
+          />
+          <Route
+            path="signup"
+            element={
+              user.token != null ? (
+                <Navigate to="/" replace={true} />
+              ) : (
+                <Signup />
               )
             }
           />
