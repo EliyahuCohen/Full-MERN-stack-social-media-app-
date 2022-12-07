@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export interface USER {
   email: string;
   password: string;
+  imgUrl: string;
   following: [];
   followers: [];
 }

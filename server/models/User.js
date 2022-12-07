@@ -11,6 +11,11 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    imgUrl: {
+      type: String,
+      required: false,
+      default: "",
+    },
     following: {
       type: Array,
       required: false,
@@ -38,7 +43,7 @@ userSchema.statics.login = async function login(email, password) {
   }
   return user;
 };
-userSchema.statics.signup = async function signup(email, password) {
+userSchema.statics.signup = async function signup(email, password, image) {
   if (!email || !password) throw Error("All fields are required");
 
   const user = await this.findOne({ email: email });
@@ -49,7 +54,7 @@ userSchema.statics.signup = async function signup(email, password) {
   const salt = await bcrypt.genSalt();
   const hash = await bcrypt.hash(password, salt);
 
-  const newUser = this.create({ email, password: hash });
+  const newUser = this.create({ email, password: hash, imgUrl: image });
   return newUser;
 };
 

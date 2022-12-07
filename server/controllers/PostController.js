@@ -32,6 +32,13 @@ const getPosts = async (req, res) => {
     }
   }
 };
+const getAllPosts = async (req, res) => {
+  const { USER_ID } = req.body;
+  if (mongoose.isValidObjectId(USER_ID)) {
+    const postsArray = await Post.find({});
+    return res.status(200).json(postsArray);
+  }
+};
 const getOnePost = async (req, res) => {
   const { USER_ID } = req.body;
   const { id } = req.params;
@@ -94,4 +101,5 @@ module.exports = {
   deletePost,
   getOnePost,
   likeDislikePost,
+  getAllPosts,
 };
