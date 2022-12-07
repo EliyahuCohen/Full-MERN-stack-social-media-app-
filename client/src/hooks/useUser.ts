@@ -18,6 +18,7 @@ export const useUser = () => {
           token: response.data.token,
         })
       );
+      console.log(response);
     } catch (err: any) {
       console.log(err.response);
     }

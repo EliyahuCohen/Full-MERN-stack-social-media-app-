@@ -6,3 +6,74 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
+/* This is the styles for the forms  */
+.signup {
+  width: 100%;
+  height: 100vh;
+  background-color: #001f3f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signup-card {
+  margin: 0 10px;
+  width: 500px;
+  padding: 4em;
+  background-color: #fff;
+  border-radius: 2%;
+}
+.signup-card p {
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+.signup-card div label {
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.signup-card div {
+  margin-top: 2rem;
+}
+.signup-card .two {
+  margin-top: 1.1rem;
+}
+.signup-card div input {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid gray;
+  border-radius: 5px;
+  outline: none;
+}
+.signup .signup-card .btn-form {
+  width: 100%;
+  margin-top: 15px;
+  padding: 0.6rem;
+  color: #fff;
+  background-color: #001f3f;
+  cursor: pointer;
+}
+.fileInput {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.fileInput p {
+  font-size: 15px;
+  margin-left: 10px;
+}
+.signup label {
+  cursor: pointer;
+}
+.link {
+  display: flex;
+  font-size: 1rem !important;
+}
+.link a {
+  margin-left: 10px;
+}
+@media screen and (max-width: 500px) {
+  .signup-card {
+    margin: 0 20px;
+    padding: 2rem;
+  }
+}
