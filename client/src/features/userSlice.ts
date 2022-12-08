@@ -5,7 +5,7 @@ export interface USER {
   password: string;
   imgUrl: string;
   following: [];
-  followers: [];
+  followers: USER[];
 }
 
 export interface IUser {

@@ -5,8 +5,14 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  color: black;
 }
-
+.section {
+  padding: 2rem;
+  max-width: 1550px;
+  margin: 0 auto;
+}
 /* This is the styles for the forms  */
 .signup {
   width: 100%;
@@ -111,4 +117,91 @@
 .navbar .items button {
   border: none;
   background: none;
+}
+
+/* Some flex on the dashboard section */
+
+.dashboard {
+  display: flex;
+}
+
+/* This is the psrt of the left profile section */
+
+.line {
+  width: 90%;
+  height: 1px;
+  background: lightgray;
+  margin: 20px auto;
+}
+.side-profile {
+  flex: 0.2;
+  background: rgba(211, 211, 211, 0.171);
+  border-radius: 3%;
+  padding: 20px;
+}
+.side-profile .row1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.info {
+  margin-left: 10px;
+}
+.info p {
+  font-size: 18px;
+  text-transform: capitalize;
+}
+.followrs {
+  font-size: 12px;
+  color: gray;
+}
+.side-profile .row1 img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 100vh;
+}
+.row2 .links {
+  display: flex;
+  font-size: 12px;
+  align-items: center;
+  margin-top: 0.6rem;
+}
+.linksIcon {
+  opacity: 0.6;
+}
+.row2 .links span {
+  margin-left: 5px;
+  color: gray;
+}
+.social {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.2rem 0;
+}
+.social-heading {
+  font-size: 13px;
+  margin-bottom: 1rem;
+}
+.soical-words {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 1400px) {
+  .side-profile {
+    flex: 0.4;
+  }
+  .side-profile:last-child {
+    display: none;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .side-profile {
+    flex: 1;
+  }
+  .dashboard {
+    flex-direction: column;
+  }
 }

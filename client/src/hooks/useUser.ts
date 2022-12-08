@@ -12,6 +12,7 @@ export const useUser = () => {
         email,
         password,
       });
+      console.log(response);
       dispatch(
         login({
           user: response.data.user,

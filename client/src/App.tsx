@@ -12,6 +12,7 @@ import {
 import { useSelector } from "react-redux";
 import { IUser } from "./features/userSlice";
 import Navbar from "./components/Navbar";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   const user = useSelector((state: { user: IUser }) => state.user);
@@ -24,7 +25,7 @@ function App() {
             path="/"
             element={
               user.token != null ? (
-                <>Hey home</>
+                <Dashboard />
               ) : (
                 <Navigate to="/login" replace={true} />
               )

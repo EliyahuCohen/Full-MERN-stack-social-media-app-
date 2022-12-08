@@ -41,6 +41,12 @@ userSchema.statics.login = async function login(email, password) {
   if (!match) {
     throw Error("Incorrect password");
   }
+  const folloersArr = [];
+  for (let i = 0; i < user.following.length; i++) {
+    let one = await this.findById(user.following[i]);
+    folloersArr.push(one);
+  }
+  user.following = folloersArr;
   return user;
 };
 userSchema.statics.signup = async function signup(email, password, image) {
