@@ -136,7 +136,7 @@
 .side-profile {
   flex: 0.2;
   background: rgba(211, 211, 211, 0.171);
-  border-radius: 3%;
+  border-radius: 8px;
   padding: 20px;
 }
 .side-profile .row1 {
@@ -189,6 +189,51 @@
   opacity: 0.6;
 }
 
+/* uploading post section */
+.upload {
+  padding: 1rem;
+  background: rgba(211, 211, 211, 0.171);
+  margin: 0 20px;
+  border-radius: 10px;
+}
+.upload .one {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.upload .one input {
+  flex: 1;
+  padding: 0.3rem 1rem;
+  border-radius: 100vh;
+  border: 1px solid gray;
+  margin: 10px;
+  outline: none;
+}
+.upload .one img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 100vh;
+}
+.upload .two {
+  display: flex;
+  justify-content: space-between;
+}
+.sub input {
+  border-radius: 0 !important;
+  border: 0 !important;
+  background: transparent;
+  border-bottom: 1px solid gray !important;
+  padding: 10px 0 !important;
+}
+.upload .two button {
+  padding: 0.2rem 0.5rem;
+  border-radius: 100vh;
+  border: 3px solid white;
+  color: white;
+  background: rgba(60, 146, 227, 0.586);
+  cursor: pointer;
+}
 @media screen and (max-width: 1400px) {
   .side-profile {
     flex: 0.4;
@@ -203,5 +248,10 @@
   }
   .dashboard {
     flex-direction: column;
+  }
+  .upload {
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 20px;
   }
 }
