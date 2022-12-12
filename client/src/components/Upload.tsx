@@ -23,10 +23,14 @@ const Upload = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     uploadPost(imgUrl, title, subtitle);
+    setImageUrl("");
+    setTitle("");
+    setSubtitle("");
   };
 
   return (
     <div className="upload">
+      <h1>{user.posts?.length}</h1>
       <p>Enter title *required</p>
       <div className="one">
         <img src={user.user?.imgUrl} alt={user.user?.email + " Image"} />

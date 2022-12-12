@@ -42,6 +42,7 @@ userSchema.statics.login = async function login(email, password) {
     throw Error("Incorrect password");
   }
   const folloersArr = [];
+
   for (let i = 0; i < user.following.length; i++) {
     let one = await this.findById(user.following[i]);
     folloersArr.push(one);

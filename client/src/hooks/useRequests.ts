@@ -28,7 +28,7 @@ export const useRequests = () => {
         }
       )
       .then((res) => {
-        dispatch(addPost(addPost(res.data)));
+        dispatch(addPost(res.data));
       })
       .catch((err) => {
         console.log(err);

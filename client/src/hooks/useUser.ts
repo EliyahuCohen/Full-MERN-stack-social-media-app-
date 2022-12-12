@@ -12,14 +12,12 @@ export const useUser = () => {
         email,
         password,
       });
-      console.log(response);
       dispatch(
         login({
           user: response.data.user,
           token: response.data.token,
         })
       );
-      console.log(response.data);
     } catch (err: any) {
       console.log(err.response);
     }
