@@ -1,12 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export interface USER {
   email: string;
   password: string;
   imgUrl: string;
-  following: [];
+  following: string[];
   followers: USER[];
   posts: POST[];
+  _id: string;
 }
 export interface POST {
   imgUrl: string;
@@ -14,6 +16,7 @@ export interface POST {
   subtitle: string;
   title: string;
   userId: string;
+  uploader: USER;
   _id: string;
 }
 
@@ -48,7 +51,25 @@ const userSlice = createSlice({
     addPost: (state, action) => {
       state.posts?.push(action.payload);
     },
+    addRemoveFriend: (state, action) => {
+      let exists = false;
+      for (let i = 0; i < state.user?.following.length!; i++) {
+        if (state.user?.following[i] == action.payload) {
+          exists = true;
+          break;
+        }
+      }
+      if (exists) {
+        state.user?.following.splice(
+          state.user?.following.indexOf(action.payload),
+          1
+        );
+      } else {
+        state.user?.following.push(action.payload);
+      }
+    },
   },
 });
 export default userSlice.reducer;
-export const { logout, login, setPosts, addPost } = userSlice.actions;
+export const { logout, login, setPosts, addPost, addRemoveFriend } =
+  userSlice.actions;

@@ -6,7 +6,11 @@ import { login } from "../features/userSlice";
 export const useUser = () => {
   const dispatch = useDispatch();
   const baseUrl = "http://localhost:3001/";
-  const loginFunction = async (email: string, password: string) => {
+  const loginFunction = async (
+    email: string,
+    password: string,
+    setError: any
+  ) => {
     try {
       const response = await axios.post(baseUrl + "login", {
         email,
@@ -19,10 +23,11 @@ export const useUser = () => {
         })
       );
     } catch (err: any) {
-      console.log(err.response);
+      setError(err.response.data.message);
     }
   };
   const signupFunction = async (
+    setError: any,
     email: string,
     password: string,
     image?: string | null | undefined
@@ -40,7 +45,7 @@ export const useUser = () => {
         })
       );
     } catch (err: any) {
-      console.log(err.response);
+      setError(err.response.data.message);
     }
   };
   return { loginFunction, signupFunction };

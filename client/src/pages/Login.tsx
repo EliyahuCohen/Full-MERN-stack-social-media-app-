@@ -7,10 +7,11 @@ const Login = () => {
   const { loginFunction } = useUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const onFormSubmit = (e: FormEvent) => {
     e.preventDefault();
-    loginFunction(email, password);
+    loginFunction(email, password, setError);
   };
   return (
     <div className="signup">
@@ -41,6 +42,7 @@ const Login = () => {
         <button className="btn-form" type="submit">
           LOGIN
         </button>
+        {error != "" && <p className="error">{error}</p>}
       </form>
     </div>
   );

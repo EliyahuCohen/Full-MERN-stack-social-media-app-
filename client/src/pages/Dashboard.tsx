@@ -4,9 +4,9 @@ import Upload from "../components/Upload";
 
 const Dashboard = () => {
   return (
-    <div className="section dashboard">
+    <div className="section dashboard ">
       <SideProfile />
-      <div style={{ flex: "0.6" }}>
+      <div className="wrapperPostss">
         <Upload />
       </div>
       <SideProfile />

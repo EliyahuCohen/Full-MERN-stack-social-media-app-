@@ -9,13 +9,15 @@ const Signup = () => {
   const [image, setImage] = useState<any>();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
   const uploadFile = async (file: any) => {
     const base64 = await useConvertImage(file.target.files[0]);
     setImage(base64);
   };
   const onSubmitForm = (e: FormEvent) => {
     e.preventDefault();
-    signupFunction(email, password, image);
+    signupFunction(setError, email, password, image);
   };
   return (
     <div className="signup">
@@ -61,6 +63,7 @@ const Signup = () => {
         <button className="btn-form" type="submit">
           SIGN UP
         </button>
+        {error != "" && <p className="error">{error}</p>}
       </form>
     </div>
   );

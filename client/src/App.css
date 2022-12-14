@@ -12,6 +12,7 @@
   padding: 2rem;
   max-width: 1550px;
   margin: 0 auto;
+  overflow: hidden;
 }
 /* This is the styles for the forms  */
 .signup {
@@ -134,8 +135,9 @@
   margin: 20px auto;
 }
 .side-profile {
+  height: fit-content;
   flex: 0.2;
-  background: rgba(211, 211, 211, 0.171);
+  background: rgba(211, 211, 211, 0.09);
   border-radius: 8px;
   padding: 20px;
 }
@@ -192,8 +194,8 @@
 /* uploading post section */
 .upload {
   padding: 1rem;
-  background: rgba(211, 211, 211, 0.171);
   margin: 0 20px;
+  background: rgba(211, 211, 211, 0.09);
   border-radius: 10px;
 }
 .upload .one {
@@ -234,12 +236,77 @@
   background: rgba(60, 146, 227, 0.586);
   cursor: pointer;
 }
+.printPosts {
+  padding: 1rem;
+  height: 50px;
+  margin: 0 20px;
+}
+
+/* handling the overflow only for the posts */
+
+.wrapperPostss {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 85vh;
+  flex: 0.6;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Middle part uploaded post */
+
+.onePost {
+  width: 100%;
+  padding: 1.5rem 1rem;
+  border-radius: 8px;
+  background: rgba(211, 211, 211, 0.2);
+  margin: 1rem 0;
+}
+
+.onePost img {
+  width: 100%;
+  border-radius: 8px;
+}
+.onePost .oneRow {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.onePost .oneRow img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.first {
+  display: flex;
+  align-items: center;
+  align-items: center;
+}
+.first strong {
+  margin-left: 10px;
+}
+
+/* for the error message while log in or signup */
+
+.error {
+  font-size: 15px !important;
+  margin-top: 5px;
+  color: red;
+  letter-spacing: 2px;
+}
+
 @media screen and (max-width: 1400px) {
   .side-profile {
     flex: 0.4;
   }
   .side-profile:last-child {
     display: none;
+  }
+  .wrapperPostss {
+    height: 85vh;
   }
 }
 @media screen and (max-width: 1200px) {
@@ -253,5 +320,8 @@
     margin: 0 auto;
     width: 100%;
     margin-top: 20px;
+  }
+  .wrapperPostss {
+    flex: none;
   }
 }

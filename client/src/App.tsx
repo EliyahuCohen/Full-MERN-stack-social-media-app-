@@ -25,7 +25,9 @@ function App() {
             path="/"
             element={
               user.token != null ? (
-                <Dashboard />
+                <div>
+                  <Dashboard />
+                </div>
               ) : (
                 <Navigate to="/login" replace={true} />
               )

@@ -22,6 +22,14 @@ const loginUser = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+const getUser = async (req, res) => {
+  const { id } = req.params;
+  const user = await User.findById(id);
+  if (user) {
+    return res.status(200).json(user);
+  }
+  return res.status(400).json({ message: "Cant find user" });
+};
 const addRemoveFriend = async (req, res) => {
   const { friendID, USER_ID } = req.body;
   let theUser = await User.findById(USER_ID);
@@ -60,4 +68,5 @@ module.exports = {
   createUser,
   loginUser,
   addRemoveFriend,
+  getUser,
 };

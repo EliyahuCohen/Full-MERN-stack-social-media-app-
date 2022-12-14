@@ -8,6 +8,7 @@ const createPost = async (req, res) => {
   if ((!USER_ID || !title, !imgUrl)) {
     return res.status(400).json({ message: "All fields are required" });
   }
+  const TheUser = await User.findById(USER_ID);
   const newpost = await Post.create({
     title,
     imgUrl,
@@ -15,7 +16,15 @@ const createPost = async (req, res) => {
     userId: USER_ID,
   });
   if (newpost) {
-    return res.status(201).json(newpost);
+    return res.status(201).json({
+      imgUrl: newpost.imgUrl,
+      likes: newpost.likes,
+      subtitle: newpost.subtitle,
+      title: newpost.title,
+      userId: newpost.userId,
+      uploader: TheUser,
+      _id: newpost._id,
+    });
   } else {
     return res
       .status(400)

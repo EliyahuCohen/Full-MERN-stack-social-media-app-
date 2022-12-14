@@ -4,6 +4,7 @@ import { IUser } from "../features/userSlice";
 import { useRequests } from "../hooks/useRequests";
 import { storage } from "../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import PrintPosts from "./PrintPosts";
 
 const Upload = () => {
   const user = useSelector((state: { user: IUser }) => state.user);
@@ -20,7 +21,6 @@ const Upload = () => {
 
   const handleUpload = (e: any) => {
     e.preventDefault();
-    console.log(file);
 
     if (!file) {
       alert("please select an image");
@@ -41,11 +41,14 @@ const Upload = () => {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setImageUrl(downloadURL);
+          if (imgUrl != "") {
+            handleSubmit();
+          }
         });
       }
     );
   };
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async () => {
     uploadPost(imgUrl, title, subtitle);
     setImageUrl("");
     setTitle("");
@@ -54,40 +57,38 @@ const Upload = () => {
   };
 
   return (
-    <div className="upload">
-      <h1>{user.posts?.length}</h1>
-      <p>Enter title *required</p>
-      <div className="one">
-        <img src={user.user?.imgUrl} alt={user.user?.email + " Image"} />
-        <input
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          type="text"
-        />
-      </div>
-      <p>Enter subtitle</p>
-      <div className="one sub">
-        <input
-          value={subtitle}
-          onChange={(e) => setSubtitle(e.target.value)}
-          type="text"
-          placeholder="Enter something"
-        />
-      </div>
-      <div className="two">
-        <input
-          type="file"
-          onChange={(e: any) => setFile(e.target.files[0])}
-          accept=".jpg, .jpeg, .png, .webp"
-        />
-        <div>
-          {imgUrl != "" ? (
-            <button onClick={handleSubmit}>POST</button>
-          ) : (
-            <button onClick={handleUpload}>Upload Image</button>
-          )}
+    <div>
+      <div className="upload">
+        <p>Enter title *required</p>
+        <div className="one">
+          <img src={user.user?.imgUrl} alt={user.user?.email + " Image"} />
+          <input
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            type="text"
+          />
+        </div>
+        <p>Enter subtitle</p>
+        <div className="one sub">
+          <input
+            value={subtitle}
+            onChange={(e) => setSubtitle(e.target.value)}
+            type="text"
+            placeholder="Enter something"
+          />
+        </div>
+        <div className="two">
+          <input
+            type="file"
+            onChange={(e: any) => setFile(e.target.files[0])}
+            accept=".jpg, .jpeg, .png, .webp"
+          />
+          <div>
+            <button onClick={handleUpload}>POST</button>
+          </div>
         </div>
       </div>
+      <PrintPosts />
     </div>
   );
 };
