@@ -18,5 +18,5 @@ React custom hooks Vite
 ## following list
 ![image](https://user-images.githubusercontent.com/100947769/207954587-592af28e-acfd-4193-840e-6c13ffb825d5.png)
 
-## Peronal profile view
+## Personal profile view
 ![image](https://user-images.githubusercontent.com/100947769/207954800-81324d0c-5fe4-4431-83fd-4aecfd54166d.png)
