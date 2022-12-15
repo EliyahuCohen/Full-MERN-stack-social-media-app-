@@ -23,10 +23,10 @@ const SideProfile = () => {
               </p>
             </Link>
             <span className="followrs">
-              {user.user?.followers.length} followers
+              {user.user?.followers && user.user?.followers.length} followers
             </span>
             <span className="followrs" style={{ marginLeft: "0.5rem" }}>
-              {user.user?.following.length} following
+              {user.user?.following && user.user?.following.length} following
             </span>
           </div>
         </div>

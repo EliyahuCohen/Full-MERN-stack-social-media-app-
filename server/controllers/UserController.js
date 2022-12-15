@@ -35,8 +35,8 @@ const addRemoveFriend = async (req, res) => {
   let theUser = await User.findById(USER_ID);
   const userFriend = await User.findById(friendID);
 
-  let followersArr = userFriend.followers;
-  let followingArr = theUser.following;
+  let followersArr = userFriend.followers || [];
+  let followingArr = theUser.following || [];
 
   const hasFriend = theUser.following.filter((one) => one == friendID);
   if (hasFriend.length > 0) {
@@ -62,7 +62,14 @@ const addRemoveFriend = async (req, res) => {
       },
     }
   );
-  res.status(201).json({ followingArr });
+
+  let arr = [];
+  console.log(followingArr);
+  for (let i = 0; i < followingArr.length; i++) {
+    let person = await User.findById(followingArr[i]);
+    arr.push(person);
+  }
+  res.status(201).json({ arr });
 };
 module.exports = {
   createUser,

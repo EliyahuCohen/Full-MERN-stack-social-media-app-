@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { IUser } from "../features/userSlice";
-import { setPosts, addPost, addRemoveFriend } from "../features/userSlice";
+import { IUser, setUserFollowing } from "../features/userSlice";
+import { setPosts, addPost } from "../features/userSlice";
 export const useRequests = () => {
   const user = useSelector((state: { user: IUser; token: string }) => state);
   const dispatch = useDispatch();
@@ -50,8 +50,7 @@ export const useRequests = () => {
         console.log(err);
       });
   };
-  const addRemoveFriendFucntion = async (id: string) => {
-    dispatch(addRemoveFriend(id));
+  const addRemoveFriendFucntion = async (id: string, setExists: any) => {
     const response = await axios
       .patch(
         `http://localhost:3001/addRemoveFriend`,
@@ -66,7 +65,11 @@ export const useRequests = () => {
         }
       )
       .then((res) => {
+        let result = checkIfUserFollowing(id);
+        setExists(!result);
+        console.log("this is the result");
         console.log(res);
+        dispatch(setUserFollowing(res.data.arr));
       })
       .catch((err) => {
         console.log(err);
@@ -75,11 +78,12 @@ export const useRequests = () => {
   const checkIfUserFollowing = (id: string) => {
     let find = false;
     for (let i = 0; i < user.user.user?.following.length!; i++) {
-      if (user.user.user?.following[i] == id) {
+      if (user.user.user?.following[i]._id == id) {
         find = true;
         break;
       }
     }
+    return find;
   };
   return {
     uploadPost,

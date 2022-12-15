@@ -1,4 +1,5 @@
 import React from "react";
+import RightSide from "../components/RightSide";
 import SideProfile from "../components/SideProfile";
 import Upload from "../components/Upload";
 
@@ -9,7 +10,7 @@ const Dashboard = () => {
       <div className="wrapperPostss">
         <Upload />
       </div>
-      <SideProfile />
+      <RightSide />
     </div>
   );
 };

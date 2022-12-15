@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { IUser } from "../features/userSlice";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
@@ -18,19 +18,19 @@ const Navbar = () => {
       <div className="links">
         {!user.user || !user.token ? (
           <div className="items">
-            <Link to="login">Login</Link>
-            <Link to="signup">Signup</Link>
+            <NavLink to="login">Login</NavLink>
+            <NavLink to="signup">Signup</NavLink>
           </div>
         ) : (
           <div className="items">
             <DarkModeOutlinedIcon />
-            <Link to="/profile">
+            <NavLink to="/profile">
               <img
                 className="avater"
                 src={`${user.user.imgUrl}`}
                 alt={user.user.email}
               />
-            </Link>
+            </NavLink>
             <button
               type="button"
               onClick={() => {

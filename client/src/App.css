@@ -298,6 +298,77 @@
   letter-spacing: 2px;
 }
 
+/* right side */
+
+.rightSide {
+  flex: 0.3;
+  margin: 0 1rem;
+}
+.rightSide .right1 {
+  border-radius: 8px;
+  background: rgba(211, 211, 211, 0.2);
+  width: 100%;
+}
+.rightSide img {
+  width: 100%;
+  border-radius: 8px;
+}
+.right2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+}
+.right2 p {
+  color: gray;
+  font-size: 13px;
+}
+.right3 {
+  padding: 5px 10px;
+  color: lightgray;
+  font-size: 12px;
+  color: rgba(128, 128, 128, 0.759);
+}
+.rightsideWrapper {
+  padding: 1rem;
+  border-radius: 8px;
+  background: rgba(211, 211, 211, 0.2);
+}
+
+/* following section  */
+
+.following {
+  width: 100%;
+  display: flex;
+  transition: 0.3s;
+  justify-content: space-between;
+  margin: 1.5rem auto;
+  align-items: center;
+  border-radius: 100vh;
+  padding: 0.5rem;
+}
+.following .icons {
+  margin-right: 1rem;
+  background: white;
+  font-size: 30px;
+  padding: 0.3rem;
+  border-radius: 50%;
+}
+.insideFollowing {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.following:hover {
+  transition: 0.3s;
+  background: rgba(128, 128, 128, 0.2);
+  text-overflow: ellipsis;
+}
+.following img {
+  margin-right: 7px;
+  object-fit: cover;
+}
+
 @media screen and (max-width: 1400px) {
   .side-profile {
     flex: 0.4;
@@ -312,6 +383,9 @@
 @media screen and (max-width: 1200px) {
   .side-profile {
     flex: 1;
+  }
+  .rightSide {
+    display: none;
   }
   .dashboard {
     flex-direction: column;

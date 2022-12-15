@@ -22,6 +22,9 @@ export const useUser = () => {
           token: response.data.token,
         })
       );
+      console.log("hey");
+      console.log(response.data);
+      console.log("hey");
     } catch (err: any) {
       setError(err.response.data.message);
     }

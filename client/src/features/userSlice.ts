@@ -5,7 +5,7 @@ export interface USER {
   email: string;
   password: string;
   imgUrl: string;
-  following: string[];
+  following: USER[];
   followers: USER[];
   posts: POST[];
   _id: string;
@@ -68,8 +68,17 @@ const userSlice = createSlice({
         state.user?.following.push(action.payload);
       }
     },
+    setUserFollowing: (state: IUser, action) => {
+      state.user!.following = action.payload;
+    },
   },
 });
 export default userSlice.reducer;
-export const { logout, login, setPosts, addPost, addRemoveFriend } =
-  userSlice.actions;
+export const {
+  logout,
+  login,
+  setPosts,
+  addPost,
+  setUserFollowing,
+  addRemoveFriend,
+} = userSlice.actions;
