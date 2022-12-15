@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import { IUser } from "./features/userSlice";
 import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
+import Profile from "./pages/Profile";
 
 function App() {
   const user = useSelector((state: { user: IUser }) => state.user);
@@ -50,6 +51,16 @@ function App() {
                 <Navigate to="/" replace={true} />
               ) : (
                 <Signup />
+              )
+            }
+          />
+          <Route
+            path="profile"
+            element={
+              user.token != null ? (
+                <Profile />
+              ) : (
+                <Navigate to="/" replace={true} />
               )
             }
           />

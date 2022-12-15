@@ -103,7 +103,14 @@ const likeDislikePost = async (req, res) => {
     return res.status(404).json({ message: "No such post" });
   }
 };
-
+const getUserPosts = async (req, res) => {
+  const { id } = req.params;
+  if (mongoose.isValidObjectId(id)) {
+    const posts = await Post.find({ userId: id });
+    return res.status(200).json(posts);
+  }
+  return res.status(404).json({ message: "cant find this user" });
+};
 module.exports = {
   createPost,
   getPosts,
@@ -111,4 +118,5 @@ module.exports = {
   getOnePost,
   likeDislikePost,
   getAllPosts,
+  getUserPosts,
 };

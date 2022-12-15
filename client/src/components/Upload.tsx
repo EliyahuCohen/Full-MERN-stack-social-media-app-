@@ -81,7 +81,7 @@ const Upload = () => {
           <input
             type="file"
             onChange={(e: any) => setFile(e.target.files[0])}
-            accept=".jpg, .jpeg, .png, .webp"
+            accept=".jpg, .jpeg, .png, .webp, .avif,.gif"
           />
           <div>
             <button onClick={handleUpload}>POST</button>

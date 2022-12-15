@@ -11,7 +11,7 @@ const FollowersList = () => {
   return (
     <div className="followingList">
       {following.map((one: USER) => {
-        return <Following one={one} />;
+        return <Following key={one._id} one={one} />;
       })}
     </div>
   );

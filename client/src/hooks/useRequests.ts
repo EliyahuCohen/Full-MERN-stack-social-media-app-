@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { IUser, setUserFollowing } from "../features/userSlice";
+import { IUser, POST, setUserFollowing } from "../features/userSlice";
 import { setPosts, addPost } from "../features/userSlice";
 export const useRequests = () => {
   const user = useSelector((state: { user: IUser; token: string }) => state);
@@ -11,7 +11,6 @@ export const useRequests = () => {
     title: string,
     subtitle: string
   ) => {
-    console.log(user);
     const response = await axios
       .post(
         "http://localhost:3001/posts/newpost",
@@ -28,7 +27,6 @@ export const useRequests = () => {
         }
       )
       .then((res) => {
-        console.log(res.data);
         dispatch(addPost(res.data));
       })
       .catch((err) => {
@@ -67,8 +65,6 @@ export const useRequests = () => {
       .then((res) => {
         let result = checkIfUserFollowing(id);
         setExists(!result);
-        console.log("this is the result");
-        console.log(res);
         dispatch(setUserFollowing(res.data.arr));
       })
       .catch((err) => {
@@ -85,10 +81,27 @@ export const useRequests = () => {
     }
     return find;
   };
+  const getUserPosts = async (id: string, setUserPosts: any) => {
+    const response = await axios
+      .get(`http://localhost:3001/posts/userPosts/${user.user.user?._id}`, {
+        headers: {
+          Authorization: `Bearer ${user.user.token}`,
+          Accept: "application/json",
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setUserPosts(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return {
     uploadPost,
     addRemoveFriendFucntion,
     checkIfUserFollowing,
     getPosts,
+    getUserPosts,
   };
 };
